@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         //
-        Schema::create('sesi', function (Blueprint $table) {
+        Schema::create('presensi', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('catatan', 255)->nullable();
             $table->date('tanggal')->unique();
@@ -27,6 +27,6 @@ return new class extends Migration
     public function down(): void
     {
         //
-        Schema::dropIfExists('sesi');
+        Schema::dropIfExists('presensi');
     }
 };

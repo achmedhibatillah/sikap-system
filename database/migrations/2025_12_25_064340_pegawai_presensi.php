@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         //
-        Schema::create('pegawai_sesi', function (Blueprint $table) {
+        Schema::create('pegawai_presensi', function (Blueprint $table) {
             $table->uuid('pegawai_id');
-            $table->uuid('sesi_id');
+            $table->uuid('presensi_id');
             $table->enum('status', ['Hadir', 'Hadir (Telat)', 'Izin', 'Cuti', 'Alpa']);
             $table->time('masuk');
             $table->time('keluar');
@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('catatan_keluar', 255);
 
             $table->foreign('pegawai_id')->references('id')->on('pegawai')->onDelete('cascade');
-            $table->foreign('sesi_id')->references('id')->on('sesi')->onDelete('cascade');
+            $table->foreign('presensi_id')->references('id')->on('presensi')->onDelete('cascade');
         });
     }
 
@@ -32,6 +32,6 @@ return new class extends Migration
     public function down(): void
     {
         //
-        Schema::dropIfExists('pegawai_sesi');
+        Schema::dropIfExists('pegawai_presensi');
     }
 };
